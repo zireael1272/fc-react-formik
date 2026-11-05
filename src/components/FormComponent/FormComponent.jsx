@@ -31,9 +31,16 @@ function FormComponent() {
       validationSchema={FORM_SHEMA}
     >
       {(formikProps) => {
-        const inputClass = classNames(styles.input, {
+        const inputEmailClass = classNames(styles.input, {
           [styles.valid]: !formikProps.errors.email && formikProps.touched.email,
           [styles.invalid]: formikProps.errors.email && formikProps.touched.email,
+        });
+
+        const inputPasswordClass = classNames(styles.input, {
+          [styles.valid]:
+            !formikProps.errors.password && formikProps.touched.password,
+          [styles.invalid]:
+            formikProps.errors.password && formikProps.touched.password,
         });
 
         return (
@@ -43,7 +50,7 @@ function FormComponent() {
                 type="email"
                 name="email"
                 placeholder="email@email"
-                className={inputClass}
+                className={inputEmailClass}
               ></Field>
               <ErrorMessage
                 name="email"
@@ -56,7 +63,7 @@ function FormComponent() {
                 type="password"
                 name="password"
                 placeholder="Password"
-                className={inputClass}
+                className={inputPasswordClass}
               ></Field>
               <ErrorMessage
                 name="password"
